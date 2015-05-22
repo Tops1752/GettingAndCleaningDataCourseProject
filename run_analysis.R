@@ -54,5 +54,5 @@ colnames(tidyData)[1] <- "Activity"
 colnames(tidyData)[2] <- "Subject"
 
 # write data to file
-write.table(tidyData,"./tidy_data.txt",row.names = FALSE)
+write.table(tidyData,"./GettingAndCleaningDataCourseProject/tidy_data.txt",row.names = FALSE)
 
