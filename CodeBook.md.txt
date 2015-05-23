@@ -1,0 +1,82 @@
+==================================================================
+Getting and Cleaning Data Project Code Book
+==================================================================
+
+Description:
+============
+The purpose of this project is to demonstrate the ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. 
+
+Source Data:
+============
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+Data Info:
+==========
+- 'features_info.txt': Shows information about the variables used on the feature vector.
+
+- 'features.txt': List of all features.
+
+- 'activity_labels.txt': Links the class labels with their activity name.
+
+- 'train/X_train.txt': Training set.
+
+- 'train/y_train.txt': Training labels.
+
+- 'test/X_test.txt': Test set.
+
+- 'test/y_test.txt': Test labels.
+
+- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+
+- 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+
+Data Analysis:
+==============
+
+Step 1: Merges the training and the test sets to create one data set.
+==
+
+Read Data:
+---------
+- ActivityLabel:	read data "activity_labels.txt"
+- Features:	read data "features.txt"
+- TrainingSet:	read data "X_train.txt"
+- TrainingLabel:	read data "y_train.txt"
+- TrainingSub:	read data "subject_train.txt"
+- TestSet:		read data "X_test.txt"
+- TestLabel:	read data "y_test.txt"
+- Subject:		read data "subject_test.txt"
+
+Merge Data:
+-----------
+- AllData:	merge data set of TrainingSet and TestSet
+- Label:	merge data set of TrainingLabel and TestLabel
+- Subject:	merge data set of TrainingSub and TestSub
+
+Step 2: Extracts only the measurements on the mean and standard deviation for each measurement.
+==
+
+- selectCol:	logic vector where features contains "-mean" or "-std" is TRUE
+- selectedData:	Data set only contains measruements on mean or standard deviation
+- selectedName:	vector of features that only contains mean or srandard deviation
+
+Step 3: Uses descriptive activity names to name the activities in the data set
+==
+
+- Activity:	create a list of corresponding activity description of Label
+- DataSet:		Final dataset combining selected mesurements, label, activity description and subject
+
+Step 4: Appropriately labels the data set with descriptive variable names.
+==
+
+- DataName:	vector of selectedName and names of label, activity description and subject.
+- use colnames() to add name of each column
+
+Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+==
+
+- tidyData:	use aggregate() to create new data frame of selected measurements in data set grouped by Activity and Subject
+
+- add column names to tidyData
+- write tidyData to file called "tidy_data.txt"
+
